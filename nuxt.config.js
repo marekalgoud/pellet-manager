@@ -67,6 +67,9 @@ export default {
   },
 
   pwa: {
+    icon: {
+      purpose: 'any'
+    },
     meta: {
       lang: 'fr',
       theme_color: '#EDF3FF'
