@@ -6,11 +6,11 @@
           <Input v-model="date" label="Le" type="text" placeholder="" />
         </div> -->
         <datetime v-model="date" type="datetime" input-class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-        <div class="my-4 flex justify-center w-full">
-          <Button type="submit" :loading="loading">
+        <div class="relative my-4 flex justify-center w-full pb-12">
+          <Button type="submit" :loading="loading" :disabled="loading">
             Ajouter un sac
           </Button>
-          <p v-if="success">
+          <p v-if="success" class="absolute bottom-0 left-0 w-full text-center text-green-800 font-medium">
             Sac ajouté !
           </p>
         </div>

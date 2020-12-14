@@ -1,5 +1,5 @@
 <template>
-  <button class="flex rounded-full bg-blue-700 text-white py-2 pl-6 pr-3">
+  <button class="flex rounded-full bg-blue-700 text-white py-2 pl-6 pr-3" :disabled="disabled">
     <span class="mr-3">
       <slot />
     </span>
@@ -30,6 +30,10 @@
 export default {
   props: {
     loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }
