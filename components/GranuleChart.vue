@@ -52,9 +52,9 @@ export default {
       for (let i = this.start; i <= this.end; i = this.$dayjs(i).add('1', this.type).valueOf()) {
         labels.push(this.$dayjs(i).format(format[this.type]))
         data.push(this.snapshot.docs.filter((c) => {
-          const end = this.$dayjs(i).add('1', this.type).valueOf()
+          const start = this.$dayjs(i).subtract('1', this.type).valueOf()
           const current = c.data().date
-          return current >= i && current <= end
+          return current >= start && current <= i
         }).length)
       }
       this.chartData = {
