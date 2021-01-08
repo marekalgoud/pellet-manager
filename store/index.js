@@ -5,7 +5,6 @@ export const state = () => ({
 
 export const mutations = {
   ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser, claims }) {
-    console.log('ON_AUTH_STATE_CHANGED_MUTATION')
     if (authUser) {
       const { uid, email, emailVerified } = authUser
       state.user = { uid, email, emailVerified }

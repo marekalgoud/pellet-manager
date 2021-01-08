@@ -49,9 +49,11 @@ export default {
   watch: {
     async type (val) {
       try {
-        this.start = this.$dayjs().subtract(12, val).valueOf()
+        this.start = this.$dayjs().subtract(12, val).startOf(val).valueOf()
         this.end = this.$dayjs().valueOf()
+        console.log(this.type, this.$dayjs(this.start).format('DD/MM/YYYY'), this.$dayjs(this.end).format('DD/MM/YYYY'))
         this.snapshot = await this.collection.where('date', '>', this.start).where('date', '<', this.end).get()
+        console.log('test', this.snapshot.docs)
       } catch (e) {
         console.error(e)
       }

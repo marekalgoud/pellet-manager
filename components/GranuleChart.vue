@@ -29,7 +29,7 @@ export default {
   },
 
   watch: {
-    type () {
+    snapshot () {
       this.updateData()
     }
   },
@@ -50,12 +50,14 @@ export default {
       }
 
       for (let i = this.start; i <= this.end; i = this.$dayjs(i).add('1', this.type).valueOf()) {
-        labels.push(this.$dayjs(i).format(format[this.type]))
-        data.push(this.snapshot.docs.filter((c) => {
-          const start = this.$dayjs(i).subtract('1', this.type).valueOf()
+        const label = this.$dayjs(i).format(format[this.type])
+        const end = this.$dayjs(i).add('1', this.type).valueOf()
+        const nb = this.snapshot.docs.filter((c) => {
           const current = c.data().date
-          return current >= start && current <= i
-        }).length)
+          return current >= i && current <= end
+        }).length
+        labels.push(label)
+        data.push(nb)
       }
       this.chartData = {
         labels,
